@@ -1,15 +1,9 @@
 // Update with your config settings.
 
-module.exports = {
-
-  development: {
+module.exports = {      
     client: 'sqlite3',
-    useNullAsDefault: true,
+    useNullAsDefault: true,    
     connection: {
-      filename: '/data/car-dealer.db3'
+      filename: './data/car-dealer.db3'
     }
-  },
-
- 
-
 };
