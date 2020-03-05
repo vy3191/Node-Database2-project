@@ -11,7 +11,10 @@ server.use(express.json());
 server.use("/api/cars", carRoutes);
 
 server.use((req,res,next) => res.status(404).json({msg:'Route Not Found'}));
-server.use((err,req,res,next) => res.status(500).json({msg:'Something wrong with server'}));
+server.use((err,req,res,next) => {
+   console.log(err)
+  res.status(500).json({msg:'Something wrong with server'})
+});
 
 server.listen(PORT,(req,res) => {
    console.log(`App is up and running at http://localhost:${PORT}`);

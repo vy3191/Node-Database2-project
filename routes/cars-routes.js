@@ -21,8 +21,9 @@ router.post("/", async (req,res,next) => {
     if(!req.body.mileage) req.status(404).json({msg:'mileage  is missing'});
     if(!req.body.type) req.status(404).json({msg:'type  is missing'});
     if(!req.body.transmission) req.status(404).json({msg:'transmission type is missing'});
+    console.log(req.body)
     const payload = {      
-      VIN:req.body.vin,
+      VIN:req.body.VIN,
       make:req.body.make,
       model:req.body.model,
       mileage:req.body.mileage,
@@ -30,6 +31,7 @@ router.post("/", async (req,res,next) => {
       transmission:req.body.type
     }
     const [id] = await db("cars").insert(payload);
+    console.log(id)
     const newCar = await db("cars").where({id:id});
     res.status(201).json(newCar);
 
